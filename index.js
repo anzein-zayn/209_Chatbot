@@ -1,25 +1,27 @@
-const express = express("express");
+const express = require("express");
 const dotenv = require("dotenv");
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
 app.use(express.json());
 app.use(express.static("public"));
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.redirect("/index.html");
-})
+});
 
-app.post("/api/chat", async (req,res) => {
+app.post("/api/chat", async (req, res) => {
+    console.log("Request masuk ke Express!");
+
     try {
-        const message = req.body.message;
+        const messages = req.body.messages;
 
-        if (!message || !Array.isArray(message)) {
+        if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({
-                error: "Messages harus berupa Array"
+                error: "Messages harus berupa array"
             });
         }
 
@@ -34,9 +36,12 @@ app.post("/api/chat", async (req,res) => {
                 },
 
                 body: JSON.stringify({
-                    module: ""
+                    model: "inclusionai/ling-3.2-flash:free",
+                    messages: messages,
+                    temperature: 0.7,
+                    max_tokens: 1000,
+                    stream: true
                 })
             }
-        )
-    }
-})
+        );
+    
