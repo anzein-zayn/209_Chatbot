@@ -89,7 +89,13 @@ app.post("/api/chat", async (req, res) => {
         if (!trimmedLine.startsWith("data:")) {
           continue;
         }
-        
+
+        const data = trimmedLine.slice("data:".length).trim();
+
+        if (data === "[DONE]") {
+          continue;
+        }
+
         try {
           const json = JSON.parse(data);
 
@@ -121,10 +127,8 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
-  });
-}
 
-module.exports = app;   
+  app.listen(port, () => {
+    console.log(`Server berjalan di http://localhost:${port}`);
+  });
+
