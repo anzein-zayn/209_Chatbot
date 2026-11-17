@@ -36,12 +36,12 @@ app.post("/api/chat", async (req, res) => {
                 },
 
                 body: JSON.stringify({
-                    model: "inclusionai/ling-3.2-flash:free",
-                    messages: messages,
-                    temperature: 0.7,
-                    max_tokens: 1000,
-                    stream: true
-                })
+                  model: "nvidia/nemotron-3.5-super-vl:free",
+                  messages: messages,
+                  temperature: 0.7,
+                  max_tokens: 1000,
+                  stream: true,
+                }),
             }
         );
     
