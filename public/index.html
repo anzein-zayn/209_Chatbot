@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tanyakan Saja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span class="brand-name">Z.Chatbot</span>
+        <span class="mode" id="mode" hidden></span>
+      </div>
+      <button class="btn-ghost" id="reset" type="button">Obrolan baru</button>
+    </header>
+
+    <main class="chat" id="chat" aria-live="polite">
+      <section class="empty" id="empty">
+        <h1>Mau tanya apa hari ini?</h1>
+        <p>Ketik pertanyaanmu di bawah, atau mulai dari salah satu ini.</p>
+        <div class="chips">
+          <button type="button" class="chip">Jelaskan perbedaan SQL dan NoSQL</button>
+          <button type="button" class="chip">Bantu saya debug error JavaScript</button>
+          <button type="button" class="chip">Apa itu subnetting?</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="composer-wrap">
+      <form class="composer" id="form" autocomplete="off">
+        <label for="input" class="sr-only">Pesan</label>
+        <textarea id="input" rows="1" maxlength="4000" placeholder="Tulis pesan. Enter untuk kirim, Shift+Enter untuk baris baru."></textarea>
+        <button class="btn-send" id="send" type="submit">Kirim</button>
+      </form>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
